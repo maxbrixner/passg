@@ -1,5 +1,6 @@
 import typing
 
+import pyperclip
 import typer
 
 from passg.alphabet import Alphabet, alphabet_mapping
@@ -28,6 +29,12 @@ def generate(
             help="Alphabet to use for generating passwords.",
         ),
     ] = Alphabet.reduced,
+    copy: typing.Annotated[
+        bool,
+        typer.Option(
+            help="Copy a password to the clipboard without displaying it.",
+        ),
+    ] = False,
 ) -> None:
     """
     Generate a specified number of passwords of a given length using a specified alphabet.
@@ -36,6 +43,14 @@ def generate(
         raise typer.BadParameter(f"Invalid alphabet: {alphabet}")
 
     alphabet_chars = alphabet_mapping[alphabet.value]
+
+    if copy:
+        pyperclip.copy(
+            generate_password(alphabet=alphabet_chars, length=length)
+        )
+        print("Password copied to clipboard.")
+        return
+
     for _ in range(count):
         print(generate_password(alphabet=alphabet_chars, length=length))
 
