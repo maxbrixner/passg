@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Launch",
+    "command": "uv run passg",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+  },
+  {
+    "label": "Ruff Check",
+    "command": "uv run ruff check --fix",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+  },
+  {
+    "label": "Ruff Format",
+    "command": "uv run ruff format",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+  },
+  {
+    "label": "Basedpyright Check",
+    "command": "uv run basedpyright",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+  },
+]
