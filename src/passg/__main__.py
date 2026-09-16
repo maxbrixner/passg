@@ -4,7 +4,7 @@ import pyperclip
 import typer
 
 from passg.alphabet import Alphabet, alphabet_mapping
-from passg.generator import generate_password
+from passg.generator import assess_password_quality, generate_password
 
 app = typer.Typer()
 
@@ -35,6 +35,12 @@ def generate(
             help="Copy a password to the clipboard without displaying it.",
         ),
     ] = False,
+    quality: typing.Annotated[
+        bool,
+        typer.Option(
+            help="Print Password quality assessment.",
+        ),
+    ] = False,
 ) -> None:
     """
     Generate a specified number of passwords of a given length using a specified alphabet.
@@ -49,10 +55,15 @@ def generate(
             generate_password(alphabet=alphabet_chars, length=length)
         )
         print("Password copied to clipboard.")
-        return
+    else:
+        for _ in range(count):
+            print(generate_password(alphabet=alphabet_chars, length=length))
 
-    for _ in range(count):
-        print(generate_password(alphabet=alphabet_chars, length=length))
+    if quality:
+        password_quality = assess_password_quality(
+            length=length, alphabet_size=len(set(alphabet_chars))
+        )
+        print(f"\nPassword quality: {password_quality}")
 
 
 def main() -> None:
