@@ -9,10 +9,10 @@ FULL_ALPHABET = (
 )
 
 # Readable alphabet, i.e. letters, digits, and punctuation without
-# zero, O, o, 1 and l.
+# ambiguous characters: 0, O, o, 1, l, I
 READABLE_ALPHABET = (
     "abcdefghijkmnpqrstuvwxyz"
-    "ABCDEFGHIJKLMNPQRSTUVWXYZ"
+    "ABCDEFGHJKLMNPQRSTUVWXYZ"
     "23456789"
     "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 )
@@ -20,15 +20,21 @@ READABLE_ALPHABET = (
 # Reduced alphabet, i.e. letters, digits and punctuation that are commonly
 # allowed in passwords
 REDUCED_ALPHABET = (
-    "abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ0123456789#$%!-_"
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%,-.:;?_"
+)
+
+# Reduced readable alphabet, i.e. letters, digits and punctuation that are commonly
+# allowed in passwords without ambiguous characters: 0, O, o, 1, l, I
+REDUCED_READABLE_ALPHABET = (
+    "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!#$%,-.:;?_"
 )
 
 # Only letters
-ALPHA_ALPHABET = "abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ"
+ALPHA_ALPHABET = "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 # Only letters and digits
 ALPHANUM_ALPHABET = (
-    "abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ0123456789"
+    "abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 )
 
 # Only digits
@@ -39,6 +45,7 @@ alphabet_mapping = {
     "full": FULL_ALPHABET,
     "readable": READABLE_ALPHABET,
     "reduced": REDUCED_ALPHABET,
+    "reduced-readable": REDUCED_READABLE_ALPHABET,
     "alpha": ALPHA_ALPHABET,
     "alphanum": ALPHANUM_ALPHABET,
     "num": NUM_ALPHABET,
@@ -49,6 +56,7 @@ class Alphabet(str, enum.Enum):
     full = "full"
     readable = "readable"
     reduced = "reduced"
+    reduced_readable = "reduced-readable"
     alpha = "alpha"
     alphanum = "alphanum"
     num = "num"

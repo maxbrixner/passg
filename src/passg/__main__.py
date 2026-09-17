@@ -28,7 +28,7 @@ def generate(
         typer.Option(
             help="Alphabet to use for generating passwords.",
         ),
-    ] = Alphabet.reduced,
+    ] = Alphabet.reduced_readable,
     copy: typing.Annotated[
         bool,
         typer.Option(
