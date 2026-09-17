@@ -9,29 +9,48 @@ def generate_password(alphabet: str, length: int) -> str:
     return "".join(secrets.choice(alphabet) for _ in range(length))
 
 
-def calculate_entropy(length: int, alphabet_size: int) -> float:
+def generate_passphrase(
+    words: list[str],
+    length: int,
+    capitalize: bool,
+    separator: str,
+) -> str:
     """
-    Calculates password entropy in bits.
+    Generate a random passphrase consisting of random words.
     """
-    if length <= 0 or alphabet_size <= 1:
+    chosen_words = [secrets.choice(words) for _ in range(length)]
+
+    if capitalize:
+        chosen_words = [word.capitalize() for word in chosen_words]
+
+    return separator.join(chosen_words)
+
+
+def calculate_entropy(sample_size: int, pool_size: int) -> float:
+    """
+    Calculates entropy in bits.
+    """
+    if sample_size <= 0 or pool_size <= 1:
         return 0.0
 
-    return length * math.log2(alphabet_size)
+    return sample_size * math.log2(pool_size)
 
 
-def assess_password_quality(length: int, alphabet_size: int) -> str:
+def assess_quality(sample_size: int, pool_size: int) -> str:
     """
-    Assesses the quality of a password based on its entropy.
+    Assesses the quality of a password/passphrase based on its entropy.
     """
-    entropy = calculate_entropy(length, alphabet_size)
+    entropy = calculate_entropy(sample_size=sample_size, pool_size=pool_size)
 
     if entropy <= 40:
-        return "very weak"
+        assessment = "very weak"
     elif entropy <= 59:
-        return "weak"
+        assessment = "weak"
     elif entropy <= 79:
-        return "fair"
+        assessment = "fair"
     elif entropy <= 99:
-        return "strong"
+        assessment = "strong"
     else:
-        return "very strong"
+        assessment = "very strong"
+
+    return f"{assessment} (entropy: {entropy:.2f} bits)"
