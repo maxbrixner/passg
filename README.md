@@ -30,43 +30,101 @@ uv tool update-shell
 
 ## Usage
 
-Generate a list of random passwords:
+Generate a list of random passwords using `passg`:
 
-```bash
-passg
+```console
+$ passg
+k6P5ayLtkbT-mL2ABV9?
+.:m!bK7!DDB_cgw88UBt
+h6Q$TCAQ9w%j5q!aK6U_
+[...]
 ```
 
-which is equivalent to:
+which is equivalent to calling `passg password` with no arguments:
 
-```bash
-passg password
+```console
+$ passg password
+k6P5ayLtkbT-mL2ABV9?
+.:m!bK7!DDB_cgw88UBt
+h6Q$TCAQ9w%j5q!aK6U_
+[...]
 ```
 
-Generate a list of random passphrases:
+You can also select a specific alphabet using `--alphabet`:
 
-```bash
-passg passphrase
+```console
+$ passg password --alphabet alphanum
+cDR176vhG25UoO91Pf5x
+ppmAI7WwOv3AoGNkzhfL
+UiQp6ORn1dGkJBy68aTV
+[...]
+```
+
+Available alphabet options are: 
+
+|Option|Description|
+|-|-|
+|full|Full alphabet, i.e. letters, digits, and punctuation|
+|readable|Readable alphabet, i.e. letters, digits, and punctuation without ambiguous characters: 0, O, o, 1, l, I|
+|reduced|Reduced alphabet, i.e. letters, digits and punctuation that are commonly allowed in passwords|
+|reduced-readable (default)|Reduced readable alphabet, i.e. letters, digits and punctuation that are commonly allowed in passwords without ambiguous characters: 0, O, o, 1, l, I|
+|alpha|Only letters|
+|alphanum|Only letters and digits|
+|num|Only digits|
+
+You can specify a length for the password using `--length`;
+
+```console
+$ passg password --length 16
+RyGMpLsxF7,Kp6.x
+R$MrKd;D$%ki!BNT
+:j;Et;SAxy9uAjnS
+[...]
+```
+
+Generate a list of random passphrases using `passg passphrase`:
+
+```console
+$ passg passphrase
+RetryWieldableSaucinessHandinessStarship
+OozyExhumeSplendidAfterlifeImpurity
+EraserClimaticPayingFrostbiteShimmy
+[...]
 ```
 
 To generate a single password or passphrase and copy it directly to the
 clipboard instead of printing it, add `--copy`:
 
-```bash
-passg password --copy
-passg passphrase --copy
+```console
+$ passg password --copy
+Password copied to clipboard.
+
+$ passg passphrase --copy
+Passphrase copied to clipboard.
 ```
 
 To print an entropy-based quality assessment alongside the output, add
 `--quality`:
 
-```bash
-passg password --quality
-passg passphrase --quality
+```console
+$ passg password --quality
+k6P5ayLtkbT-mL2ABV9?
+.:m!bK7!DDB_cgw88UBt
+h6Q$TCAQ9w%j5q!aK6U_
+[...]
+Password quality: very strong (entropy: 121.32 bits)
+
+$ passg passphrase --quality
+RetryWieldableSaucinessHandinessStarship
+OozyExhumeSplendidAfterlifeImpurity
+EraserClimaticPayingFrostbiteShimmy
+[...]
+Passphrase quality: fair (entropy: 64.62 bits)
 ```
 
 See all available options for each command:
 
-```bash
+```console
 passg password --help
 passg passphrase --help
 ```
