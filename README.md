@@ -1,10 +1,7 @@
 # passg
 
-A minimal password generator I wrote for personal use.
-
-Passg can generate either passwords made up of random characters or
-passphrases made up of random words (using the
-[EFF long word list](https://www.eff.org/dice)).
+A minimal password generator that can generate passwords made up of random characters or
+passphrases made up of random words (using the [EFF long word list](https://www.eff.org/dice)).
 
 ## Features
 
@@ -73,3 +70,15 @@ See all available options for each command:
 passg password --help
 passg passphrase --help
 ```
+
+## License
+
+This project is distributed under the terms specified in the LICENSE.md file.
+
+## Contributing
+
+Passg is an open-source project. For bug reports, feature requests, or contributions, please visit the [project repository](https://github.com/maxbrixner/passg).
+
+## Support
+
+For issues and support requests, please use the [project's issue tracker](https://github.com/maxbrixner/passg/issues)
