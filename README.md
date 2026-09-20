@@ -157,6 +157,11 @@ To print an entropy-based quality assessment alongside the output, add
 
 ```bash
 passg password --quality
+```
+
+Output:
+
+```
 k6P5ayLtkbT-mL2ABV9?
 .:m!bK7!DDB_cgw88UBt
 h6Q$TCAQ9w%j5q!aK6U_
