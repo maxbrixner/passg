@@ -30,10 +30,17 @@ uv tool update-shell
 
 ## Usage
 
+### Passwords
+
 Generate a list of random passwords using `passg`:
 
-```console
-$ passg
+```bash 
+passg
+```
+
+Output:
+
+```
 k6P5ayLtkbT-mL2ABV9?
 .:m!bK7!DDB_cgw88UBt
 h6Q$TCAQ9w%j5q!aK6U_
@@ -42,23 +49,33 @@ h6Q$TCAQ9w%j5q!aK6U_
 
 which is equivalent to calling `passg password` with no arguments:
 
-```console
-$ passg password
-k6P5ayLtkbT-mL2ABV9?
-.:m!bK7!DDB_cgw88UBt
-h6Q$TCAQ9w%j5q!aK6U_
+```bash
+passg password
+```
+
+Output:
+
+```
+.$4KmCzxxwirfQNf7Xvp
+e?p:M%WS29egERW4JdUs
+p;p2H.wbc2wkhF%f8bF;
 [...]
 ```
 
 You can also select a specific alphabet using `--alphabet`:
 
-```console
-$ passg password --alphabet alphanum
+```bash
+passg password --alphabet alphanum
+```
+Output:
+
+```
 cDR176vhG25UoO91Pf5x
 ppmAI7WwOv3AoGNkzhfL
 UiQp6ORn1dGkJBy68aTV
 [...]
 ```
+
 
 Available alphabet options are: 
 
@@ -74,53 +91,82 @@ Available alphabet options are:
 
 You can specify a length for the password using `--length`;
 
-```console
-$ passg password --length 16
+```bash
+passg password --length 16
+```
+
+Output:
+
+```
 RyGMpLsxF7,Kp6.x
 R$MrKd;D$%ki!BNT
 :j;Et;SAxy9uAjnS
 [...]
 ```
 
+To generate a single password and copy it directly to the
+clipboard instead of printing it, add `--copy`:
+
+```bash
+passg password --copy
+```
+
+### Passphrases
+
 Generate a list of random passphrases using `passg passphrase`:
 
-```console
-$ passg passphrase
+```bash
+passg passphrase
+``` 
+
+Output:
+
+```
 RetryWieldableSaucinessHandinessStarship
 OozyExhumeSplendidAfterlifeImpurity
 EraserClimaticPayingFrostbiteShimmy
 [...]
 ```
 
-To generate a single password or passphrase and copy it directly to the
+You can specify a length (i.e. number of words) for the passphrase using `--length`;
+
+```bash
+passg passphrase --length 3
+```
+
+Output:
+
+```
+CurtainEuphemismCelery
+DeodorantFableCrying
+CrazyDreamlandConjuror
+[...]
+```
+
+To generate a single passphrase and copy it directly to the
 clipboard instead of printing it, add `--copy`:
 
-```console
-$ passg password --copy
-Password copied to clipboard.
-
+```bash
 $ passg passphrase --copy
-Passphrase copied to clipboard.
 ```
+
+### Quality Assessment
 
 To print an entropy-based quality assessment alongside the output, add
 `--quality`:
 
-```console
-$ passg password --quality
+```bash
+passg password --quality
 k6P5ayLtkbT-mL2ABV9?
 .:m!bK7!DDB_cgw88UBt
 h6Q$TCAQ9w%j5q!aK6U_
 [...]
 Password quality: very strong (entropy: 121.32 bits)
-
-$ passg passphrase --quality
-RetryWieldableSaucinessHandinessStarship
-OozyExhumeSplendidAfterlifeImpurity
-EraserClimaticPayingFrostbiteShimmy
-[...]
-Passphrase quality: fair (entropy: 64.62 bits)
 ```
+
+This also works for passphrases.
+
+### More Options
 
 See all available options for each command:
 
