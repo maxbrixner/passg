@@ -170,7 +170,7 @@ This also works for passphrases.
 
 See all available options for each command:
 
-```console
+```bash
 passg password --help
 passg passphrase --help
 ```
